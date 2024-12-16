@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,7 @@ namespace WpfApp2
         private Timer timerRansomware;
         private Timer timerErrors;
         private Timer timerUpdate;
+        private Timer czas;
 
         // Obiekt Random
         private Random rnd = new Random();
@@ -34,18 +36,24 @@ namespace WpfApp2
         public int gold { get; set; } = 0;
         public int timeVirus, timeTrojan, timeRansomware, timeErrors;
         private int errors;
+        int iloscSekund;
         MainWindow mainWindow = new MainWindow();
 
         // Konstruktor
         public GameReal()
         {
-            this.Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
+            Closing += new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
             InitializeComponent();
             timeVirus = Protected.slowDownVirusTime();
             timerVirus = new Timer(rnd.Next(1,3) * 1000);
             timerVirus.Elapsed += TimerVirus_Elapsed;
             timerVirus.AutoReset = true;
             timerVirus.Start();
+
+            czas = new Timer(1000);
+            czas.AutoReset = true;
+            czas.Elapsed += new ElapsedEventHandler(aktualizujCzas);
+            czas.Start();
 
             timeTrojan = Protected.slowDownTrojanTime();
             timerTrojan = new Timer(timeTrojan * 1000);
@@ -73,6 +81,12 @@ namespace WpfApp2
             trojan.Content = iloscTrojan;
             ransomware.Content = iloscRansomware;
             error.Content = iloscErrors;
+        }
+
+        private void aktualizujCzas(object sender, ElapsedEventArgs e)
+        {
+            File.CreateText(@"C:\protyou\czas\czas.txt");
+            File.WriteAllText(@"C:\protyou\czas\czas.txt", iloscSekund.ToString());
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -139,10 +153,8 @@ namespace WpfApp2
             }
             if (iloscVirus == 10)
             {
-                for(int i = 0; i < 3; i++)
-                {
-                    MessageBox.Show("Zainfekowano komputer", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                  MessageBox.Show("Zainfekowano komputer", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                iloscVirus++;
             }
             
         }

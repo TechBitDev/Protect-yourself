@@ -11,7 +11,7 @@ namespace WpfApp2.script
         {
             checkUpdates(serverUrl, localPath);
         }
-        private void checkUpdates(string serverUrl,string localUrl) {
+        void checkUpdates(string serverUrl,string localUrl) {
             // Tworzenie obiektu do pobierania danych z serwera
             WebClient client = new WebClient();
 
