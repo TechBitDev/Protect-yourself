@@ -1,0 +1,6 @@
+C:\Users\janus\Desktop\ProtectYourself\Szyfrowanie\bin\Debug\Szyfrowanie.dll
+C:\Users\janus\Desktop\ProtectYourself\Szyfrowanie\bin\Debug\Szyfrowanie.pdb
+C:\Users\janus\Desktop\ProtectYourself\Szyfrowanie\obj\Debug\Szyfrowanie.csproj.AssemblyReference.cache
+C:\Users\janus\Desktop\ProtectYourself\Szyfrowanie\obj\Debug\Szyfrowanie.csproj.CoreCompileInputs.cache
+C:\Users\janus\Desktop\ProtectYourself\Szyfrowanie\obj\Debug\Szyfrowanie.dll
+C:\Users\janus\Desktop\ProtectYourself\Szyfrowanie\obj\Debug\Szyfrowanie.pdb
